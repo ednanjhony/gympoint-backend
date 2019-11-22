@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  // Criando um novo ADM
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -29,6 +30,7 @@ class UserController {
       });
     }
 
+    // Confirmando o cadastro do novo ADM
     const { id, name, email } = await User.create(req.body);
 
     return res.json({
@@ -81,6 +83,7 @@ class UserController {
       });
     }
 
+    // Confirmando as mudanças no ADM
     const { id, name } = await user.update(req.body);
 
     return res.json({

@@ -1,3 +1,5 @@
+// Arquvivo responsável para criar dados do usuário
+
 import Sequelize, { Model } from 'sequelize';
 import bcrypt from 'bcryptjs';
 
@@ -14,6 +16,8 @@ class User extends Model {
         sequelize,
       }
     );
+
+    // Gerando um hash_password
     this.addHook('beforeSave', async user => {
       if (user.password) {
         user.password_hash = await bcrypt.hash(user.password, 8);
